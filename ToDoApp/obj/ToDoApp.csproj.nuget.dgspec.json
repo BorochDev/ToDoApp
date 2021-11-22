@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp\\ToDoApp.csproj": {}
+    "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp\\ToDoApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.App\\ToDoApp.App.csproj": {
+    "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.App\\ToDoApp.App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.App\\ToDoApp.App.csproj",
+        "projectUniqueName": "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.App\\ToDoApp.App.csproj",
         "projectName": "ToDoApp.App",
-        "projectPath": "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.App\\ToDoApp.App.csproj",
+        "projectPath": "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.App\\ToDoApp.App.csproj",
         "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.App\\obj\\",
+        "outputPath": "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -34,8 +34,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.Domain\\ToDoApp.Domain.csproj": {
-                "projectPath": "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.Domain\\ToDoApp.Domain.csproj"
+              "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.Domain\\ToDoApp.Domain.csproj": {
+                "projectPath": "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.Domain\\ToDoApp.Domain.csproj"
               }
             }
           }
@@ -68,14 +68,14 @@
         }
       }
     },
-    "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.Domain\\ToDoApp.Domain.csproj": {
+    "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.Domain\\ToDoApp.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.Domain\\ToDoApp.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.Domain\\ToDoApp.Domain.csproj",
         "projectName": "ToDoApp.Domain",
-        "projectPath": "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.Domain\\ToDoApp.Domain.csproj",
+        "projectPath": "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.Domain\\ToDoApp.Domain.csproj",
         "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -128,14 +128,14 @@
         }
       }
     },
-    "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp\\ToDoApp.csproj": {
+    "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp\\ToDoApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp\\ToDoApp.csproj",
+        "projectUniqueName": "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp\\ToDoApp.csproj",
         "projectName": "ToDoApp",
-        "projectPath": "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp\\ToDoApp.csproj",
+        "projectPath": "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp\\ToDoApp.csproj",
         "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp\\obj\\",
+        "outputPath": "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -158,8 +158,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.App\\ToDoApp.App.csproj": {
-                "projectPath": "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.App\\ToDoApp.App.csproj"
+              "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.App\\ToDoApp.App.csproj": {
+                "projectPath": "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.App\\ToDoApp.App.csproj"
               }
             }
           }

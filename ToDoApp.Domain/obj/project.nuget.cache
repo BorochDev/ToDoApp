@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NgYbs91LcvjbvLpA9NQoPKjHqeq+/9c40V85zAu4nzUPEk9MzOFn0+dYFcYYZL7wS6obOIC93PNuqe+Sol7IBQ==",
+  "dgSpecHash": "nS7aERrDmEVmY8QZoo4zUXQhXtwQHt/V7ZtjT0rNnmfRiON1ogYK+HUzFj/+9NTbz06fK+P89brObDPapJ/wRA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Legion\\source\\repos\\ToDoApp\\ToDoApp.Domain\\ToDoApp.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Legion\\source\\repos\\BorochDev\\ToDoApp\\ToDoApp.Domain\\ToDoApp.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
