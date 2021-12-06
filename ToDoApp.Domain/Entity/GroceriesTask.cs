@@ -7,8 +7,11 @@ using ToDoApp.Domain.Common;
 
 namespace ToDoApp.Domain.Entity
 {
-    public class NormalTask : Tasks
+    public class GroceriesTasks : Tasks
     {
+        public double Price { get; set; }
+
+        public int Amount { get; set; }
 
 
     }

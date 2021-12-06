@@ -7,8 +7,9 @@ using ToDoApp.Domain.Common;
 
 namespace ToDoApp.Domain.Entity
 {
-    class DeadlineTask : Tasks
+    public class FamilyMember : Person
     {
-        public DateTime Deadline { get; set; }
+
+
     }
 }

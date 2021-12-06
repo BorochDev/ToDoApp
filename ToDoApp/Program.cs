@@ -5,57 +5,85 @@ namespace ToDoApp
 {
     public class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            
-
-            TaskManager taskManager = new TaskManager();
+            TaskManager taskManager = new();
 
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("1) Dodaj zadanie");
-                Console.WriteLine("2) Znajdź zadanie");
-                Console.WriteLine("3) Pokaż wszystkie zadania");
-                Console.WriteLine("4) Aktualizuj zadanie");
-                Console.WriteLine("5) Usuń zadanie");
-                Console.WriteLine("6) Zakończ program");
-                int.TryParse(Console.ReadLine().ToString(), out int choice);
-                Console.Clear();
-                switch (choice)
+                Console.WriteLine("Jaką operację mamy wykonać?");
+                Console.WriteLine("1. Dodaj taska");
+                Console.WriteLine("2. Usuń taska");
+                Console.WriteLine("3. Pokaż taska");
+                Console.WriteLine("4. Pokaż wszystkie taski");
+                Console.WriteLine("5. Zaktualizuj taska");
+                Console.WriteLine("6. Sprawdź kiedy skończy się task");
+                Console.WriteLine("7. Wyświetl listę osób z przypisanymi zadaniami");
+                Console.WriteLine("8. Przypisz zadanie do osoby");
+                Console.WriteLine("9. Dodaj nową osobę");
+                Console.WriteLine("9. Zamknij program");
+
+                int.TryParse(Console.ReadLine().ToString(), out int question);
+                switch (question)
                 {
                     case 1:
-                        taskManager.Test();
-                        break;
-
+                        {
+                            taskManager.AddTask();
+                            break;
+                        }
                     case 2:
-                        taskManager.FindTask();
-                        break;
-
+                        {
+                            taskManager.DeleteTask();
+                            break;
+                        }
                     case 3:
-                        taskManager.ShowAll();
-                        break;
-
+                        {
+                            taskManager.ShowTask();
+                            break;
+                        }
                     case 4:
-                        taskManager.UpdateTask();
-                        break;
-
+                        {
+                            taskManager.ShowAll();
+                            break;
+                        }
                     case 5:
-                        taskManager.DeleteTask();
-                        break;
-
+                        {
+                            taskManager.UpdateTask();
+                            break;
+                        }
                     case 6:
-                        return;
-                        //Environment.Exit(0);
-
-
+                        {
+                            taskManager.CheckEstimatedCompletionTime();
+                            break;
+                        }
+                    case 7:
+                        {
+                            taskManager.ShowPeople();
+                            break;
+                        }
+                    case 8:
+                        {
+                            taskManager.AssignTask();
+                            break;
+                        }
+                    case 9:
+                        {
+                            taskManager.AddPerson();
+                            break;
+                        }
+                    case 10:
+                        {
+                            Environment.Exit(0);
+                            break;
+                        }
                     default:
-                        Console.WriteLine("Bledne dane!");
-                        Console.ReadKey();
-                        break;
+                        {
+                            Console.WriteLine("Błędne dane, spróbuj jeszcze raz");
+                            Console.ReadKey();
+                            break;
+                        }
                 }
-
-
             }
         }
     }

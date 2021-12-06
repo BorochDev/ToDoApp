@@ -1,47 +1,62 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using ToDoApp.App.Concrete;
 using ToDoApp.Domain.Entity;
+using ToDoApp.Domain.Enums;
 
 namespace ToDoApp.App.Managers
 {
     public class TaskManager
     {
-        private readonly NormalTaskService normalTaskService;
+        private readonly CleaningTaskService cleaningTaskService;
         public TaskManager()
         {
-            normalTaskService = new NormalTaskService();
+            cleaningTaskService = new CleaningTaskService();
         }
-
 
         public void AddTask()
         {
             string title, description;
-            Console.Write("Podaj tytuł zadania: ");
+            Console.WriteLine("Podaj tytuł");
             title = Console.ReadLine().ToString();
-            Console.Write("Podaj opis zadania: ");
+            Console.WriteLine("Podaj opis");
             description = Console.ReadLine().ToString();
-            normalTaskService.AddNewTask(new NormalTask() { Title = title, Description = description });
+            Console.WriteLine("Wybierz rodzaj sprzątania:");
+            //int counter = 0;
+            //dlaczego jak tu dam private to w poniższym foreachu już mi nie rozpoznaje?
+            foreach (var item in Enum.GetNames<CleaningActivities>())
+            {
+                Console.WriteLine("{0} - {1} ", item.ToString());
+            }
+            string chosenType = Console.ReadLine().ToString();
+
+
+            //taskType = Console.ReadLine().ToString();
+            cleaningTaskService.AddNewTask(title, description, chosenType);
+            Console.WriteLine("Dodano taska");
+            Console.ReadKey();
         }
 
         public void ShowAll()
         {
-            foreach (var item in normalTaskService.GetAllTasks())
+            List<CleaningTasks> taskList = new List<CleaningTasks>();
+            //czy to zainicjalizowanie taskList jest konieczne?
+            taskList = cleaningTaskService.GetAllTasks();
+            foreach (var task in taskList)
             {
-                Console.WriteLine("ID: " + item.TaskID);
-                Console.WriteLine(item.Title);
-                Console.WriteLine(item.Description);
-                if (item.IsDone)
+                Console.WriteLine(@"ID to {0}, tytuł: {1}, opis: {2}, typ: {3}, czas procesowania: {4}", task.TaskID, task.Title, task.Description, task.CleaningActivity, task.TaskPerformanceTime);
+                if (task.IsCompleted)
                 {
-                    Console.WriteLine("Zadanie skończone");
+                    Console.WriteLine("Zadanie zakończone");
                 }
                 else
                 {
                     Console.WriteLine("W trakcie wykonywania");
                 }
-                {
-
-                }
-                Console.WriteLine("Dodano: " + item.CreateTime.Day + "." + item.CreateTime.Month + "." + item.CreateTime.Year);
+                Console.WriteLine(@"Dodano {0}/{1}/{2}", task.CreatedTime.Day, task.CreatedTime.Month, task.CreatedTime.Year);
                 Console.WriteLine();
             }
             Console.ReadKey();
@@ -49,140 +64,168 @@ namespace ToDoApp.App.Managers
 
         public void DeleteTask()
         {
-            int id = 0;
-            Console.Write("Podaj ID zadania do usuniecia: ");
-            if (!int.TryParse(Console.ReadLine().ToString(), out id))
+            Console.WriteLine("Podaj numer ID taska do usunięcia, lub jego tytuł");
+            string deleteVar = Console.ReadLine().ToString();
+            if (!int.TryParse(deleteVar, out int id))
             {
-                Console.WriteLine("Podano bledne dane!");
+                Console.WriteLine("Podano błędne dane");
                 Console.ReadKey();
                 return;
             }
-            normalTaskService.DeleteTask(id);
-
+            cleaningTaskService.DeleteTask(id);
+            Console.WriteLine(@"Usunięto taska o numerze {0}", deleteVar);
+            Console.ReadKey();
         }
 
-        public void FindTask()
+        public void ShowTask()
         {
-            NormalTask task;
+            Console.WriteLine("Podaj numer ID taska do pokazania, lub jego tytuł");
+            var showVar = Console.ReadLine().ToString();
+            System.Type typeOfVar = showVar.GetType();
+            string typeOfVar_tostring = typeOfVar.ToString();
 
-            Console.WriteLine("1) szukaj po ID");
-            Console.WriteLine("2) szukaj po tytule");
-            if (!int.TryParse(Console.ReadLine().ToString(), out int choice))
+            switch (typeOfVar_tostring)
             {
-                Console.Clear();
-                Console.WriteLine("Bledne dane!");
-                Console.ReadKey();
-                return;
-            }
-            Console.Clear();
-            switch (choice)
-            {
-                case 1:
-                    int id;
-                    Console.Write("Podaj id: ");
-                    if (!int.TryParse(Console.ReadLine().ToString(), out id))
+                case "System.String":
                     {
-                        Console.WriteLine("bledne dane!");
-                        Console.ReadKey();
-                        return;
-                    }
-                    task = normalTaskService.GetTask(id);
-
-                    if (task != null)
-                    {
-                        Console.WriteLine("ID: " + task.TaskID);
-                        Console.WriteLine(task.Title);
-                        Console.WriteLine(task.Description);
-                        if (task.IsDone)
+                        List<CleaningTasks> taskList = new List<CleaningTasks>();
+                        //czy to zainicjalizowanie taskList jest konieczne?
+                        taskList = cleaningTaskService.GetTask(showVar);
+                        foreach (var task in taskList)
                         {
-                            Console.WriteLine("Zadanie skończone");
+                            Console.WriteLine(@"ID to {0}, tytuł: {1}, opis: {2}, typ: {3}, czas procesowania: {4}", task.TaskID, task.Title, task.Description, task.CleaningActivity, task.TaskPerformanceTime);
+                            if (task.IsCompleted)
+                            //jak zrobić zawijanie tekstu?
+                            {
+                                Console.WriteLine("Zadanie zakończone");
+                            }
+                            else
+                            {
+                                Console.WriteLine("W trakcie wykonywania");
+                            }
+                            Console.WriteLine(@"Dodano {0}/{1}/{2}", task.CreatedTime.Day, task.CreatedTime.Month, task.CreatedTime.Year);
+                            Console.WriteLine();
+                        }
+                        break;
+                    }
+                case "System.Int32":
+                    {
+                        CleaningTasks cleaningTask = new CleaningTasks();
+
+                        Console.WriteLine(@"ID to {0}, tytuł: {1}, opis: {2}, typ: {3}, czas procesowania: {4}", cleaningTask.TaskID, cleaningTask.Title, cleaningTask.Description, cleaningTask.CleaningActivity, cleaningTask.TaskPerformanceTime);
+                        if (cleaningTask.IsCompleted)
+                        {
+                            Console.WriteLine("Zadanie zakończone");
                         }
                         else
                         {
                             Console.WriteLine("W trakcie wykonywania");
                         }
-                        {
-
-                        }
-                        Console.WriteLine("Dodano: " + task.CreateTime.Day + "." + task.CreateTime.Month + "." + task.CreateTime.Year);
-
+                        Console.WriteLine(@"Dodano {0}/{1}/{2}", cleaningTask.CreatedTime.Day, cleaningTask.CreatedTime.Month, cleaningTask.CreatedTime.Year);
+                        break;
                     }
-                    else
-                    {
-                        Console.WriteLine("Nie znaleziono takiego ID");
-                    }
-
-                    Console.ReadKey();
-
-                    break;
-
-                case 2:
-                    Console.Write("Podaj tytuł: ");
-                    foreach (var item in normalTaskService.GetTask(Console.ReadLine().ToString()))
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("ID: " + item.TaskID);
-                        Console.WriteLine(item.Title);
-                        Console.WriteLine(item.Description);
-                        if (item.IsDone)
-                        {
-                            Console.WriteLine("Zadanie skończone");
-                        }
-                        else
-                        {
-                            Console.WriteLine("W trakcie wykonywania");
-                        }
-                        {
-
-                        }
-                        Console.WriteLine("Dodano: " + item.CreateTime.Day + "." + item.CreateTime.Month + "." + item.CreateTime.Year);
-                        Console.WriteLine();
-                    }
-                    if (true)
-                    {
-
-                    }
-                    Console.ReadKey();
-                    break;
                 default:
-                    break;
+                    {
+                        break;
+                    }
+
             }
+            Console.ReadKey();
         }
 
         public void UpdateTask()
         {
-            Console.WriteLine("Podaj ID zadania do edycji: ");
-            if (!int.TryParse(Console.ReadLine(), out int id))
+            Console.WriteLine("Podaj numer ID taska do pokazania, lub jego tytuł");
+            string updateVar = Console.ReadLine().ToString();
+            if (!int.TryParse(updateVar, out var taskID))
             {
-                Console.WriteLine("Bledne dane!");
+                Console.WriteLine("Błędne dane!");
                 Console.ReadKey();
                 return;
             }
-            string title, description;
-            Console.Write("Podaj nowy tytuł: ");
-            title = Console.ReadLine();
-            Console.Write("Podaj nowy opis: ");
-            description = Console.ReadLine();
-
-            if (normalTaskService.UpdateTask(id, title, description) != -1)
+            Console.WriteLine("Podaj nowy tytuł taska");
+            string newTitle = Console.ReadLine().ToString();
+            Console.WriteLine("Podaj nowy opis taska");
+            string newDescription = Console.ReadLine().ToString();
+            Console.WriteLine("Podaj nowy typ taska");
+            foreach (var cleaningType in CleaningActivites)
             {
-                Console.Clear();
-                Console.WriteLine("Zaktualozowano");
-                Console.ReadKey();
+                Console.WriteLine(cleaningType);
             }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("nie znaleziono zadania o takim ID!");
-                Console.ReadKey();
-            }
-
+            //jak tu ograniczyć tylko do wartości enumów?
+            string newType = Console.ReadLine().ToString();
+            Console.WriteLine("Podaj nowy czas procesowania");
+            string newPerformanceTime = Console.ReadLine().ToString();
+            cleaningTaskService.UpdateTask(taskID, newTitle, newDescription, newType, Convert.ToInt32(newPerformanceTime));
+            //jak zrobic zeby bylo nieobowiazkowe zmienianie niektorych parametrow, np. performanceTime albo newType?
+            Console.WriteLine(@"Udało się zaktualizować dane taska o numrze {0}", updateVar);
+            Console.ReadKey();
         }
 
-        public void Test()
+        public void CheckEstimatedCompletionTime()
         {
-            int a = 5;
-            normalTaskService.Test(out a);
+            Console.WriteLine("Podaj id taska:");
+            string taskID = Console.ReadLine().ToString();
+            if (!int.TryParse(taskID, out int id))
+            {
+                Console.WriteLine("Podano błędne dane");
+                Console.ReadKey();
+                return;
+            }
+            CleaningTasks cleaningTask = cleaningTaskService.GetTask(id);
+            Console.WriteLine(cleaningTaskService.CheckTaskTime(cleaningTask).ToString());
+            Console.ReadKey();
         }
+
+        public void ShowPeople()
+        {
+            List<FamilyMember> peopleList = new List<FamilyMember>();
+            peopleList = cleaningTaskService.GetAllPeople();
+            foreach (var person in peopleList)
+            {
+                Console.WriteLine(@"{0}, w wieku lat: {1}", person.Name, person.Age);
+                foreach (var duty in person.Duties)
+                {
+                    if (duty.IsCompleted)
+                    {
+                        Console.WriteLine($"Wykonał zadanie {duty.TaskID}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Wykonuje zadanie {duty.TaskID}");
+                    }
+                }
+                Console.WriteLine();
+            }
+            Console.ReadKey();
+        }
+
+        public void AssignTask()
+        {
+            Console.WriteLine("Podaj imię osoby");
+            string person = Console.ReadLine().ToString();
+            Console.WriteLine("Podaj id lub tytuł taska");
+            var taskRef = Console.ReadLine().ToString();
+            cleaningTaskService.AssignPersonToTask(person, taskRef);
+        }
+
+        public void AddPerson()
+        {
+            string name, age;
+            Console.WriteLine("Jak ma na imię nowa osoba?");
+            name = Console.ReadLine().ToString();
+            Console.WriteLine("Ile ma lat?");
+            age = Console.ReadLine().ToString();
+            if (!int.TryParse(age, out int resultAge))
+            {
+                Console.WriteLine("Podane błędny wiek, proszę podać liczbę");
+                Console.ReadKey();
+                return;
+            }
+            cleaningTaskService.AddNewPerson(name, resultAge);
+            Console.WriteLine("Dodano osobę");
+            Console.ReadKey();
+        }
+
     }
 }
