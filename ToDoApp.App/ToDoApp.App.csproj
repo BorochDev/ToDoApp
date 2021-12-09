@@ -8,8 +8,4 @@
     <ProjectReference Include="..\ToDoApp.Domain\ToDoApp.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Abstract\" />
-  </ItemGroup>
-
 </Project>

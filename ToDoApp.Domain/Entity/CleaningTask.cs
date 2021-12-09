@@ -13,13 +13,13 @@ namespace ToDoApp.Domain.Entity
         public CleaningActivities CleaningActivity { get; set; }
         //czy tu mogę od razu wrzucić enum czy muszę go wrzucać osobno do folderu enums 
         
-        public int Time
+        public double Time
         {
             get { return Time; }
-            set { Time = (int)CleaningActivity * Area; }
+            set { Time = ((int)CleaningActivity) * Area; }
         }
 
-        public int Area { get; set; }
+        public double Area { get; set; }
     }
 
 

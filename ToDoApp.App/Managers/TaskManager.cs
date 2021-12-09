@@ -20,22 +20,47 @@ namespace ToDoApp.App.Managers
         public void AddTask()
         {
             string title, description;
+            double area;
             Console.WriteLine("Podaj tytuł");
             title = Console.ReadLine().ToString();
             Console.WriteLine("Podaj opis");
             description = Console.ReadLine().ToString();
+            Console.WriteLine("Podaj pole pracy");
+            if (!double.TryParse(Console.ReadLine().ToString(), out area))
+            {
+                Console.WriteLine("Podano błędne dane.");
+                return;
+            }
             Console.WriteLine("Wybierz rodzaj sprzątania:");
-            //int counter = 0;
+            int counter = 1;
             //dlaczego jak tu dam private to w poniższym foreachu już mi nie rozpoznaje?
             foreach (var item in Enum.GetNames<CleaningActivities>())
             {
-                Console.WriteLine("{0} - {1} ", item.ToString());
+                Console.WriteLine("{0} - {1} ",counter, item.ToString());
             }
-            string chosenType = Console.ReadLine().ToString();
+            if (!int.TryParse(Console.ReadLine().ToString(), out counter))
+            {
+                Console.WriteLine("Podano błędny typ.");
+                return;
+            }
+            else
+            {
+                if (counter > Enum.GetValues(typeof(CleaningActivities)).Length)
+                {
+                    Console.WriteLine("Podano liczbę spoza zakresu");
+                    return;
+                }
+
+                CleaningActivities cleaningActivities = new CleaningActivities();
+                
+
+            }
+
+            CleaningTasks cleaningTasks = new CleaningTasks() { Title = title, Description = description, CleaningActivity = cleaningActivities, IsCompleted = false, Area };
 
 
             //taskType = Console.ReadLine().ToString();
-            cleaningTaskService.AddNewTask(title, description, chosenType);
+            cleaningTaskService.AddNewItem(cleaningTasks);
             Console.WriteLine("Dodano taska");
             Console.ReadKey();
         }
@@ -44,7 +69,7 @@ namespace ToDoApp.App.Managers
         {
             List<CleaningTasks> taskList = new List<CleaningTasks>();
             //czy to zainicjalizowanie taskList jest konieczne?
-            taskList = cleaningTaskService.GetAllTasks();
+            taskList = cleaningTaskService.GetAllItems();
             foreach (var task in taskList)
             {
                 Console.WriteLine(@"ID to {0}, tytuł: {1}, opis: {2}, typ: {3}, czas procesowania: {4}", task.TaskID, task.Title, task.Description, task.CleaningActivity, task.TaskPerformanceTime);
@@ -72,7 +97,7 @@ namespace ToDoApp.App.Managers
                 Console.ReadKey();
                 return;
             }
-            cleaningTaskService.DeleteTask(id);
+            cleaningTaskService.DeleteItem(id);
             Console.WriteLine(@"Usunięto taska o numerze {0}", deleteVar);
             Console.ReadKey();
         }
@@ -90,7 +115,7 @@ namespace ToDoApp.App.Managers
                     {
                         List<CleaningTasks> taskList = new List<CleaningTasks>();
                         //czy to zainicjalizowanie taskList jest konieczne?
-                        taskList = cleaningTaskService.GetTask(showVar);
+                        taskList = cleaningTaskService.GetItem(showVar);
                         foreach (var task in taskList)
                         {
                             Console.WriteLine(@"ID to {0}, tytuł: {1}, opis: {2}, typ: {3}, czas procesowania: {4}", task.TaskID, task.Title, task.Description, task.CleaningActivity, task.TaskPerformanceTime);
@@ -172,7 +197,7 @@ namespace ToDoApp.App.Managers
                 Console.ReadKey();
                 return;
             }
-            CleaningTasks cleaningTask = cleaningTaskService.GetTask(id);
+            CleaningTasks cleaningTask = cleaningTaskService.GetItem(id);
             Console.WriteLine(cleaningTaskService.CheckTaskTime(cleaningTask).ToString());
             Console.ReadKey();
         }
