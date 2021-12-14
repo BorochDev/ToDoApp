@@ -12,7 +12,7 @@ namespace ToDoApp.Domain.Common
         public int Age { get; set; }
         public List<Tasks> Duties { get; set; }
         //czemu nie moze byc List od T? bo to jest abstrakcyjna klasa a nie interfejs?
-
+        //Zawsze używać będziemy Tasków jeśli chcemy dodać typ generyczny trzeba dodać go przy nazwie klasy
 
     }
 }

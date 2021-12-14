@@ -17,7 +17,7 @@ namespace ToDoApp.App.Abstract
         public T GetItem(int id);
         public List<T> GetItem(string title);
         public int DeleteItem(int id);
-        public int UpdateItem(T item);
+        public int UpdateItem(int id, T item);
         public int AddNewItem(T item);
         public List<T> GetAllItems();
     }

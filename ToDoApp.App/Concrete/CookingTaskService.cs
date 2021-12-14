@@ -4,22 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoApp.App.Abstract;
-using ToDoApp.Domain.Common;
 using ToDoApp.Domain.Entity;
-using ToDoApp.Domain.Enums;
 
 namespace ToDoApp.App.Concrete
 {
-    public class CleaningTaskService : TaskService<CleaningTasks>
+    public class CookingTaskService : TaskService<CookingTasks>
     {
-
-
-        private int id = 0;
-
-        public CleaningTaskService()
-        {
-
-        }
-
     }
 }

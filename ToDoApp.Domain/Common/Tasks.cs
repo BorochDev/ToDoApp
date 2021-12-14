@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ToDoApp.Domain.Common
 {
-    public abstract class Tasks
+    public class Tasks
+    //usunąłem abstract
+
     {
         public string? Title { get; set; }
         public string? Description { get; set; }
@@ -14,7 +16,8 @@ namespace ToDoApp.Domain.Common
         public DateTime CreatedTime { get; set; }
         public bool IsCompleted { get; set; }
         //public string? TaskType { get; set; }
-        public int TaskPerformanceTime { get; set; }
+        public virtual double TaskPerformanceTime { get; set; }
+        //public virtual string? TaskType { get; set; }
 
     }
 }
