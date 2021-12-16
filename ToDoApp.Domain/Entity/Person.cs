@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ToDoApp.Domain.Common
 {
-    public abstract class Person 
+    public class Person 
+        //usunalem abstract
     {
         public string Name { get; set; }
         public int Age { get; set; }

@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "6c900593-ed52-49b8-8198-b4afdf0d841e": {
+      "ProjectGuid": "6c900593-ed52-49b8-8198-b4afdf0d841e",
+      "DisplayName": "ToDoApp",
+      "ColorIndex": 0
+    },
+    "f7b9a7d8-0911-4640-83aa-776792c4b3b6": {
+      "ProjectGuid": "f7b9a7d8-0911-4640-83aa-776792c4b3b6",
+      "DisplayName": "ToDoApp.Domain",
+      "ColorIndex": 1
+    },
+    "0bfd3c54-4d56-4605-b86a-28b06c338d74": {
+      "ProjectGuid": "0bfd3c54-4d56-4605-b86a-28b06c338d74",
+      "DisplayName": "ToDoApp.App",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

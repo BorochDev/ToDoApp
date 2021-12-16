@@ -14,7 +14,8 @@ namespace ToDoApp.App.Concrete
     {
 
 
-        private int id = 0;
+        //private int id = 0;
+        //id ma byc wartoscia globalną dla wszystkich taskow
 
         public CleaningTaskService()
         {

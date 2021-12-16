@@ -9,3 +9,15 @@ C:\Users\Legion\source\repos\ToDoApp\ToDoApp.Domain\obj\Debug\net5.0\ToDoApp.Dom
 C:\Users\Legion\source\repos\ToDoApp\ToDoApp.Domain\obj\Debug\net5.0\ToDoApp.Domain.dll
 C:\Users\Legion\source\repos\ToDoApp\ToDoApp.Domain\obj\Debug\net5.0\ref\ToDoApp.Domain.dll
 C:\Users\Legion\source\repos\ToDoApp\ToDoApp.Domain\obj\Debug\net5.0\ToDoApp.Domain.pdb
+C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.Domain\bin\Debug\net5.0\ToDoApp.Domain.deps.json
+C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.Domain\bin\Debug\net5.0\ToDoApp.Domain.dll
+C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.Domain\bin\Debug\net5.0\ref\ToDoApp.Domain.dll
+C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.Domain\bin\Debug\net5.0\ToDoApp.Domain.pdb
+C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.Domain\obj\Debug\net5.0\ToDoApp.Domain.csproj.AssemblyReference.cache
+C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.Domain\obj\Debug\net5.0\ToDoApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.Domain\obj\Debug\net5.0\ToDoApp.Domain.AssemblyInfoInputs.cache
+C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.Domain\obj\Debug\net5.0\ToDoApp.Domain.AssemblyInfo.cs
+C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.Domain\obj\Debug\net5.0\ToDoApp.Domain.csproj.CoreCompileInputs.cache
+C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.Domain\obj\Debug\net5.0\ToDoApp.Domain.dll
+C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.Domain\obj\Debug\net5.0\ref\ToDoApp.Domain.dll
+C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.Domain\obj\Debug\net5.0\ToDoApp.Domain.pdb

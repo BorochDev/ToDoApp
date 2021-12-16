@@ -15,7 +15,7 @@ namespace ToDoApp.Domain.Common
         public int TaskID { get; set; }
         public DateTime CreatedTime { get; set; }
         public bool IsCompleted { get; set; }
-        //public string? TaskType { get; set; }
+        public string? TaskType { get; set; }
         public virtual double TaskPerformanceTime { get; set; }
         //public virtual string? TaskType { get; set; }
 

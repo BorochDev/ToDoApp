@@ -10,7 +10,9 @@ namespace ToDoApp.Domain.Entity
 {
     public class CookingTasks : Tasks
     {
-        public string DishName { get; set; }
+        //public string DishName { get; set; }
+        //zawiera się w title
+        private const double cookingTime = 20;
 
         private List<IngredientsEnum> ingredients;
         public List<IngredientsEnum> Ingredients
@@ -48,6 +50,11 @@ namespace ToDoApp.Domain.Entity
                 }
             }
             return returnedIngredients;
+        }
+        public override double TaskPerformanceTime
+        {
+            get { return TaskPerformanceTime; }
+            set { TaskPerformanceTime = cookingTime + double.Parse((Ingredients.Count*8).ToString()); }
         }
     }
 }

@@ -8,24 +8,24 @@ namespace ToDoApp.Domain.Enums
 {
     public enum CleaningActivities
     {
-        Odkurzanie = 25,
-        Zmywanie = 40,
-        Pranie = 120,
-        Mycie_podłóg = 240
+        odkurzanie = 25,
+        zmywanie = 40,
+        pranie = 120,
+        mycie_podłóg = 240
     }
 
     public enum IngredientsEnum
     {
-        Warzywa,
-        Mięso,
-        Olej,
-        Woda,
-        Przyprawy,
-        Chleb,
-        Mleko,
-        Mąka,
-        Ryż,
-        Makaron,
-        Sos
+        warzywa,
+        mięso,
+        olej,
+        woda,
+        przyprawy,
+        chleb,
+        mleko,
+        mąka,
+        ryż,
+        makaron,
+        sos
     }
 }
