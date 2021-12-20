@@ -9,7 +9,7 @@ using ToDoApp.Domain.Enums;
 
 namespace ToDoApp.App.Abstract
 {
-    public  class TaskService<T> : IService<T> where T : Tasks
+    public abstract class TaskService<T> : IService<T> where T : Tasks
         //dlaczego musimy to zapisać tak, a nie po prostu public abstract class TaskService<Tasks> : IService<T> ?
         //W task service dodawać tylko funkcje które działają na parametrach Tasks
     {

@@ -22,11 +22,11 @@ namespace ToDoApp.Domain.Entity
         //}
 
         //Virtual i override służą do nadpisywania właściwości i funkcji klas nadrzędnych
-        public override double TaskPerformanceTime 
-        {
-            get { return TaskPerformanceTime; }
-            set { TaskPerformanceTime = ((int)CleaningActivity) * Area; }
-        }
+        //public override double TaskPerformanceTime 
+        //{
+        //    get { return TaskPerformanceTime; }
+        //    set { TaskPerformanceTime = ((int)CleaningActivity) * Area; }
+        //}
 
         
         

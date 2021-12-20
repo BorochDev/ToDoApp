@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nkD8+Ms5HcO1z29iNYcnAEtlTD976JydvQKxQKdoAOdLwkw7KMb5ZP4Gh3PbG8gGzQkPeMBdNghcgZ3LTlcKwA==",
+  "dgSpecHash": "eMUj9XTFFP6FwH0Bf7PPf0cNxnkxUWYQJgQ2nhvBgNYWawbhnxypF1T9WXEG5GRNbETkpuhG/g0M7pbEFJY4KA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\emea_svc_ibot_bsot01\\source\\repos\\ToDoApp\\ToDoApp.App\\ToDoApp.App.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\emea_svc_ibot_bsot01\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\emea_svc_ibot_bsot01\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\emea_svc_ibot_bsot01\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\Legion\\source\\repos\\new branch\\ToDoApp.App\\ToDoApp.App.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

@@ -51,10 +51,10 @@ namespace ToDoApp.Domain.Entity
             }
             return returnedIngredients;
         }
-        public override double TaskPerformanceTime
-        {
-            get { return TaskPerformanceTime; }
-            set { TaskPerformanceTime = cookingTime + double.Parse((Ingredients.Count*8).ToString()); }
-        }
+        //public override double TaskPerformanceTime
+        //{
+            //get { return TaskPerformanceTime; }
+            //set { TaskPerformanceTime = cookingTime + double.Parse((Ingredients.Count*8).ToString()); }
+        //}
     }
 }

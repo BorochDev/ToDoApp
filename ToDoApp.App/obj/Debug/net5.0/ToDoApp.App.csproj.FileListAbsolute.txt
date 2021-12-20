@@ -28,3 +28,18 @@ C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.App\obj\Debug\net5.0\
 C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.App\obj\Debug\net5.0\ToDoApp.App.dll
 C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.App\obj\Debug\net5.0\ref\ToDoApp.App.dll
 C:\Users\emea_svc_ibot_bsot01\source\repos\ToDoApp\ToDoApp.App\obj\Debug\net5.0\ToDoApp.App.pdb
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\bin\Debug\net5.0\ToDoApp.App.deps.json
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\bin\Debug\net5.0\ToDoApp.App.dll
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\bin\Debug\net5.0\ref\ToDoApp.App.dll
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\bin\Debug\net5.0\ToDoApp.App.pdb
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\bin\Debug\net5.0\ToDoApp.Domain.dll
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\bin\Debug\net5.0\ToDoApp.Domain.pdb
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\obj\Debug\net5.0\ToDoApp.App.csproj.AssemblyReference.cache
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\obj\Debug\net5.0\ToDoApp.App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\obj\Debug\net5.0\ToDoApp.App.AssemblyInfoInputs.cache
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\obj\Debug\net5.0\ToDoApp.App.AssemblyInfo.cs
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\obj\Debug\net5.0\ToDoApp.App.csproj.CoreCompileInputs.cache
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\obj\Debug\net5.0\ToDoApp.App.csproj.CopyComplete
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\obj\Debug\net5.0\ToDoApp.App.dll
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\obj\Debug\net5.0\ref\ToDoApp.App.dll
+C:\Users\Legion\source\repos\new branch\ToDoApp.App\obj\Debug\net5.0\ToDoApp.App.pdb

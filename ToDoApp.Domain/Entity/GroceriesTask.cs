@@ -15,11 +15,11 @@ namespace ToDoApp.Domain.Entity
         private const double walkingTime = 10;
         public int Amount { get; set; }
 
-        public override double TaskPerformanceTime
-        {
-            get { return TaskPerformanceTime; }
-            set { TaskPerformanceTime = walkingTime + double.Parse((Amount*5).ToString()); }
-        }
+        //public override double TaskPerformanceTime
+        //{
+        //    get { return TaskPerformanceTime; }
+        //    set { TaskPerformanceTime = walkingTime + double.Parse((Amount*5).ToString()); }
+        //}
 
         public double GetTotalCost(int amount, double price)
         {

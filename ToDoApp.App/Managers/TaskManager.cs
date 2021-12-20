@@ -21,10 +21,10 @@ namespace ToDoApp.App.Managers
         private readonly TaskService<Tasks> taskService;
         private int id = 0;
         List<Tasks> taskList;
-        
-        
 
-            
+
+
+
         public TaskManager()
         {
             personService = new PersonService();
@@ -33,15 +33,12 @@ namespace ToDoApp.App.Managers
             groceriesTaskService = new GroceriesTaskService();
             //czy teraz tu musimy w nawiasach podać Tasks, Persons?:
             //taskService = new TaskService(Tasks, Persons)
-            //czy to zainicjalizowanie taskList jest konieczne?
-            List<Tasks> taskList = new List<Tasks>();
-            taskList.Concat(cleaningTaskService.GetAllItems());
-            taskList.Concat(groceriesTaskService.GetAllItems());
-            taskList.Concat(cookingTaskService.GetAllItems());
-            taskList.OrderBy(n => n.TaskID);
+            //czy to zainicjalizowanie taskList jest konieczne
             //czy to tutaj czy poza konstruktorem?
 
         }
+
+
 
         public void AddTask()
         {
@@ -66,7 +63,7 @@ namespace ToDoApp.App.Managers
                             return;
                         }
                         Console.WriteLine("Wybierz rodzaj sprzątania:");
-                        int counter = 1;
+                        bool TypeGet = false;
 
                         foreach (var item in Enum.GetNames<CleaningActivities>())
                         {
@@ -75,6 +72,7 @@ namespace ToDoApp.App.Managers
                             if (typeAnswer == "Y")
                             {
                                 cleaningActivity = (CleaningActivities)Enum.Parse(typeof(CleaningActivities), item);
+                                TypeGet = true;
                                 break;
                             }
                             else if (typeAnswer == "N")
@@ -105,6 +103,12 @@ namespace ToDoApp.App.Managers
                         //dlaczego nie podajemy tu nru counteru wziętego z inputu od użytkownika
                         //dlaczego w wysokopoziomowym task managerze robimy szczegolowe Add Task dla klasy CleaningTasks a nie generyczne Add Task?
                         //
+
+                        if (!TypeGet)
+                        {
+                            Console.WriteLine("Nie wybrano żadnego rodzaju!");
+                            return;
+                        }
                         CleaningTasks cleaningTask = new CleaningTasks()
                         {
                             Title = title,
@@ -123,18 +127,18 @@ namespace ToDoApp.App.Managers
                     }
                 case "Zakupy":
                     {
-                        Console.WriteLine("Podaj rodzaj składnika który chcesz kupić");                      
+                        Console.WriteLine("Podaj rodzaj składnika który chcesz kupić");
                         foreach (var ingredient in Enum.GetNames<IngredientsEnum>())
                         {
                             Console.WriteLine(ingredient);
                         }
                         string ingredientAnswer = Console.ReadLine().ToString();
-                        if (Enum.GetNames<IngredientsEnum>().Contains(ingredientAnswer.ToLower())==false) 
+                        if (Enum.GetNames<IngredientsEnum>().Contains(ingredientAnswer.ToLower()) == false)
                         {
                             Console.WriteLine("Podanego składnika nie ma na liście");
                             return;
                         }
-                        
+
                         Console.WriteLine("Podaj cenę jednostkową składnika");
                         if (!double.TryParse(Console.ReadLine().ToString(), out double price))
                         {
@@ -142,13 +146,13 @@ namespace ToDoApp.App.Managers
                             return;
                         }
 
-                        Console.WriteLine("Podaj ilość sztuk");                        
+                        Console.WriteLine("Podaj ilość sztuk");
                         if (!int.TryParse(Console.ReadLine().ToString(), out int amount))
                         {
                             Console.WriteLine("Podano błędne dane.");
                             return;
                         }
-                        
+
                         //groceries code here
                         GroceriesTasks groceriesTask = new GroceriesTasks()
                         {
@@ -159,7 +163,7 @@ namespace ToDoApp.App.Managers
                             Amount = amount,
                             IngredientName = (IngredientsEnum)Enum.Parse(typeof(IngredientsEnum), ingredientAnswer.ToLower()),
                             TaskID = taskID,
-                            TaskType = taskType 
+                            TaskType = taskType
                         };
                         groceriesTaskService.AddNewItem(groceriesTask);
                         break;
@@ -176,6 +180,7 @@ namespace ToDoApp.App.Managers
                         catch
                         {
                             Console.WriteLine("Podano błędną ścieżkę");
+                            Console.ReadKey();
                             return;
                         }
                         finally
@@ -205,6 +210,7 @@ namespace ToDoApp.App.Managers
 
         public void ShowAll()
         {
+            CreateList();
             //Console.WriteLine("Cleaning Tasks: ");
             //foreach (var item in cleaningTaskService.GetAllItems())
             //{
@@ -220,11 +226,11 @@ namespace ToDoApp.App.Managers
             //    //wypisać wszystkie dane
             //}
 
-            
+
 
             foreach (var task in taskList)
             {
-                Console.WriteLine(@"ID to {0}, typ: {1} tytuł: {2}, opis: {3}, czas procesowania: {4}", 
+                Console.WriteLine(@"ID to {0}, typ: {1} tytuł: {2}, opis: {3}, czas procesowania: {4}",
                     task.TaskID, task.TaskType, task.Title, task.Description, task.TaskPerformanceTime);
                 //switch (typeOfVar_tostring)
                 //{
@@ -273,13 +279,32 @@ namespace ToDoApp.App.Managers
                 Console.ReadKey();
                 return;
             }
-            cleaningTaskService.DeleteItem(id);
-            Console.WriteLine(@"Usunięto taska o numerze {0}", deleteVar);
+            if (cleaningTaskService.DeleteItem(id) != -1)
+            {
+                Console.WriteLine(@"Usunięto taska o numerze {0}", deleteVar);
+                Console.ReadKey();
+                return;
+            }
+            if (cookingTaskService.DeleteItem(id) != -1)
+            {
+                Console.WriteLine(@"Usunięto taska o numerze {0}", deleteVar);
+                Console.ReadKey();
+                return;
+            }
+            if (groceriesTaskService.DeleteItem(id) != -1)
+            {
+                Console.WriteLine(@"Usunięto taska o numerze {0}", deleteVar);
+                Console.ReadKey();
+                return;
+            }
+            Console.WriteLine("Nie znaleziono taska o podanym ID!");
             Console.ReadKey();
+            return;
         }
 
         public void ShowTask()
         {
+            CreateList();
             Console.WriteLine("Podaj numer ID taska do pokazania, lub jego tytuł");
 
             var showVar = Console.ReadLine().ToString();
@@ -296,7 +321,7 @@ namespace ToDoApp.App.Managers
                     Console.WriteLine("Nie znaleziono taska o podanym tytule");
                     Console.ReadKey();
                     return;
-                }          
+                }
             }
             else
             {
@@ -308,7 +333,7 @@ namespace ToDoApp.App.Managers
                     Console.WriteLine("Nie znaleziono taska o podanym ID");
                     Console.ReadKey();
                     return;
-                }                
+                }
             }
 
             string typeOfTask = singleElementList[0].TaskType;
@@ -322,9 +347,8 @@ namespace ToDoApp.App.Managers
                             var cleaningTaskList = cleaningTaskService.GetItem(showVar);
                             foreach (var task in cleaningTaskList)
                             {
-                                Console.WriteLine(@"Dane taska o numerze ID {0}:/nStworzono: {1}/nTytuł: {2}/nOpis: {3}/nTyp: {4}/nCzas procesowania: {5}/nStatus: {6}
-                                    /nRodzaj sprzątania: {7}/nObszar sprzątania: {8}",
-                                    task.TaskID, task.CreatedTime, task.Title, task.Description, task.TaskType, task.TaskPerformanceTime, task.IsCompleted? "Wykonano":"W trakcie", 
+                                Console.WriteLine("Dane taska o numerze ID {0}:\nStworzono: {1}\nTytuł: {2}\nOpis: {3}\nTyp: {4}\nCzas procesowania: {5}\nStatus: {6} \nRodzaj sprzątania: {7}\nObszar sprzątania: {8}",
+                                    task.TaskID, task.CreatedTime, task.Title, task.Description, task.TaskType, task.TaskPerformanceTime, task.IsCompleted ? "Wykonano" : "W trakcie",
                                     task.CleaningActivity, task.Area);
 
                             }
@@ -332,9 +356,9 @@ namespace ToDoApp.App.Managers
                         else
                         {
                             var task = cleaningTaskService.GetItem(id);
-                            Console.WriteLine(@"Dane taska o numerze ID {0}:/nStworzono: {1}/nTytuł: {2}/nOpis: {3}/nTyp: {4}/nCzas procesowania: {5}/nStatus: {6}
-                                    /nRodzaj sprzątania: {7}/nObszar sprzątania: {8}",
-                                    task.TaskID, task.CreatedTime, task.Title, task.Description, task.TaskType, task.TaskPerformanceTime, task.IsCompleted ? "Wykonano" : "W trakcie", 
+                            Console.WriteLine("Dane taska o numerze ID {0}:\nStworzono: {1}\nTytuł: {2}\nOpis: {3}\nTyp: {4}\nCzas procesowania: {5}\nStatus: {6}"
+                                    + "\nRodzaj sprzątania: {7}\nObszar sprzątania: {8}",
+                                    task.TaskID, task.CreatedTime, task.Title, task.Description, task.TaskType, task.TaskPerformanceTime, task.IsCompleted ? "Wykonano" : "W trakcie",
                                     task.CleaningActivity, task.Area);
                         }
                         break;
@@ -349,7 +373,7 @@ namespace ToDoApp.App.Managers
                                 Console.WriteLine(@"Dane taska o numerze ID {0}:/nStworzono: {1}/nTytuł: {2}/nOpis: {3}/nTyp: {4}/nCzas procesowania: {5}/nStatus: {6}
                                     /nPrzepis: {7}/nLista składników: {8}",
                                     task.TaskID, task.CreatedTime, task.Title, task.Description, task.TaskType, task.TaskPerformanceTime, task.IsCompleted ? "Wykonano" : "W trakcie",
-                                    task.Recipe, String.Join(", ",task.Ingredients));
+                                    task.Recipe, String.Join(", ", task.Ingredients));
 
                             }
                         }
@@ -386,9 +410,9 @@ namespace ToDoApp.App.Managers
                                     task.IngredientName, task.Price, task.Amount, task.GetTotalCost(task.Amount, task.Price));
                         }
                         break;
-                    }                   
-                        
-                            
+                    }
+
+
                 default:
                     {
                         break;
@@ -403,7 +427,7 @@ namespace ToDoApp.App.Managers
         //nowy opis itp do zmiany. wyjasnijmy to na lekcji
         {
             Console.WriteLine("Podaj numer ID taska do pokazania, lub jego tytuł");
-            string updateVar = Console.ReadLine().ToString();            
+            string updateVar = Console.ReadLine().ToString();
             bool isNumeric;
             List<Tasks> singleElementList;
             int id;
@@ -434,12 +458,12 @@ namespace ToDoApp.App.Managers
             }
 
             string typeOfTask = singleElementList[0].TaskType;
-            
+
             Console.WriteLine("Podaj nowy tytuł taska");
             string newTitle = Console.ReadLine().ToString();
             Console.WriteLine("Podaj nowy opis taska");
             string newDescription = Console.ReadLine().ToString();
-            
+
             switch (typeOfTask)
             {
                 case "Sprzątanie":
@@ -447,7 +471,7 @@ namespace ToDoApp.App.Managers
                         if (isNumeric == false)
                         {
                             var cleaningTaskList = cleaningTaskService.GetItem(updateVar);
-                                                        
+
                             Console.WriteLine("Więcej niż jeden task o podanej nazwie: " + updateVar + ". O które ID Ci chodziło?");
                             foreach (var foundTask in cleaningTaskList)
                             {
@@ -458,9 +482,9 @@ namespace ToDoApp.App.Managers
                                 Console.WriteLine("Podano błędne dane");
                                 Console.ReadKey();
                                 return;
-                            }                         
+                            }
                         }
-                        
+
                         var task = cleaningTaskService.GetItem(id);
 
                         task.Title = newTitle;
@@ -494,7 +518,7 @@ namespace ToDoApp.App.Managers
 
                         Console.WriteLine("Czy chcesz zmienić powierzchnię? Y/N");
                         answer = Console.ReadLine().ToString();
-                        if (answer=="Y")
+                        if (answer == "Y")
                         {
                             Console.WriteLine("Podaj nową powierzchnię sprzątania");
                             if (!double.TryParse(Console.ReadLine().ToString(), out double newArea))
@@ -504,7 +528,7 @@ namespace ToDoApp.App.Managers
                                 return;
                             }
                             task.Area = newArea;
-                        }                        
+                        }
                         break;
                     }
                 case "Gotowanie":
@@ -630,7 +654,7 @@ namespace ToDoApp.App.Managers
 
             if (isNumeric) { Console.WriteLine(@"Udało się zaktualizować dane taska o numerze {0}", id); }
             else { Console.WriteLine(@"Udało się zaktualizować dane taska o tytule {0}", updateVar); }
-            
+
             Console.ReadKey();
         }
 
@@ -752,9 +776,9 @@ namespace ToDoApp.App.Managers
             {
                 personService.AssignNewTaskToPerson(person, singleElementList);
                 Console.WriteLine(@"Dodano {0}elementową listę tasków o tytule {1} do osoby {2}", singleElementList.Count, singleElementList[0].Title, person.Name);
-            }          
-            
-            
+            }
+
+
         }
 
         public void AddPerson()
@@ -774,6 +798,15 @@ namespace ToDoApp.App.Managers
             personService.AddNewPerson(person);
             Console.WriteLine("Dodano osobę");
             Console.ReadKey();
+        }
+
+        private void CreateList()
+        {
+            taskList = new List<Tasks>();
+            taskList.AddRange(cleaningTaskService.GetAllItems());
+            taskList.AddRange(groceriesTaskService.GetAllItems());
+            taskList.AddRange(cookingTaskService.GetAllItems());
+            taskList.OrderBy(n => n.TaskID);
         }
 
     }

@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = ToDoApp.Domain
-build_property.ProjectDir = C:\Users\Legion\source\repos\BorochDev\ToDoApp\ToDoApp.Domain\
+build_property.ProjectDir = c:\users\legion\source\repos\new branch\ToDoApp.Domain\
