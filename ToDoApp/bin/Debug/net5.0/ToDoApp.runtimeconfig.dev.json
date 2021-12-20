@@ -1,10 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\Legion\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Legion\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-      "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
+      "C:\\Users\\emea_svc_ibot_bsot01\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\emea_svc_ibot_bsot01\\.nuget\\packages"
     ]
   }
 }

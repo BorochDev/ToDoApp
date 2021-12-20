@@ -9,12 +9,12 @@ using ToDoApp.Domain.Enums;
 
 namespace ToDoApp.App.Abstract
 {
-    public abstract class TaskService<T> : IService<T> where T : Tasks
+    public  class TaskService<T> : IService<T> where T : Tasks
         //dlaczego musimy to zapisać tak, a nie po prostu public abstract class TaskService<Tasks> : IService<T> ?
         //W task service dodawać tylko funkcje które działają na parametrach Tasks
     {
         private List<T> TaskList { get; set; }
-        private int id = 0;
+        //private int id = 0; - moved to TaskManager
 
         public TaskService()
         {
@@ -31,11 +31,29 @@ namespace ToDoApp.App.Abstract
             }
             return null;
         }
+        //static Tasks GetItem(int id)
+        //{
+        //    foreach (var item in TaskList)
+        //    {
+        //        if (item.TaskID == id)
+        //        {
+        //            return item;
+        //        }
+        //    }
+        //    return null;
+        //}
+
+
 
         public List<T> GetItem(string title)
         {
             return TaskList.Where(t => t.Title.Contains(title)).ToList();
         }
+        //static List<Tasks> GetItem(string title)
+        //{
+        //    return TaskList.Where(t => t.Title.Contains(title)).ToList();
+        //}
+
 
         public int DeleteItem(int id)
         {
@@ -47,6 +65,16 @@ namespace ToDoApp.App.Abstract
             }
             return -1;
         }
+        //static int DeleteItem(int id)
+        //{
+        //    if (GetItem(id).TaskID != -1)
+        //    {
+        //        var task = GetItem(id);
+        //        TaskList.Remove(task);
+        //        return id;
+        //    }
+        //    return -1;
+        //}
 
         public int UpdateItem(int id, T item)
         {
@@ -59,23 +87,50 @@ namespace ToDoApp.App.Abstract
             }
             return -1;
         }
+        //static int UpdateItem(int id, Tasks item)
+        //{
+        //    if (item.Title != null && item.Description != null)
+        //    {
+        //        var task = GetItem(id);
+        //        task.Title = item.Title;
+        //        task.Description = item.Description;
+        //        return id;
+        //    }
+        //    return -1;
+        //}
 
-        public int AddNewItem(T task, double area)
+        public int AddNewItem(T task)
         {
             if (task.Title != null && task.Description != null)
             {
-                task.TaskID = id++;
+                //task.TaskID = id++;
                 task.CreatedTime = DateTime.Now;
                 TaskList.Add(task);
                 return task.TaskID;
             }
             return -1;
         }
+        //static int AddNewItem(Tasks task)
+        //{
+        //    if (task.Title != null && task.Description != null)
+        //    {
+        //        task.TaskID = id++;
+        //        task.CreatedTime = DateTime.Now;
+        //        TaskList.Add(task);
+        //        return task.TaskID;
+        //    }
+        //    return -1;
+        //}
 
         public List<T> GetAllItems()
         {
             return TaskList;
         }
+            //}
+            //static List<Tasks> GetAllItems()
+            //{
+            //    return TaskList;
+            //}
 
         //public void AssignPersonToTask(string name, int id)
         //{
